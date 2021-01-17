@@ -4,6 +4,7 @@
   const CONST_SHOWN_TIME = 8000;
   const CONST_TRANSITION_TIME = 1000;
   const CONST_TRANSITION_DELAY_TIME = CONST_TRANSITION_TIME / 50;
+  const CONST_TICK_FREQUENCY = 100;
 
   const imageNames = ['slide_01', 'slide_02', 'slide_03', 'slide_04'];
 
@@ -13,7 +14,7 @@
 
   const slideImageFunc = {
     _make(imageName) {
-      const url = `images/arts/${imageName}.jpg`;
+      const url = `${process.env.URL_CDN}/${imageName}.jpg`;
       const altText = 'Placeholder text.';
 
       const imgDOM = document.createElement('img');
@@ -56,7 +57,7 @@
 
   const slideTimeFunc = {
     tick() {
-      progressMs += CONST_SHOWN_TIME / 100;
+      progressMs += CONST_SHOWN_TIME / (CONST_TICK_FREQUENCY - 2);
     },
     reset() {
       progressMs = 0;
@@ -67,8 +68,8 @@
     slideImageFunc.appendList(slideImageFunc.makeList(imageNames), imageWrapper);
 
     setInterval(() => {
-      progressMs += CONST_SHOWN_TIME / 100;
-    }, CONST_SHOWN_TIME / 100);
+      slideTimeFunc.tick();
+    }, CONST_SHOWN_TIME / CONST_TICK_FREQUENCY);
     setInterval(() => {
       slideImageFunc.slide(imageWrapper);
       slideTimeFunc.reset();
@@ -95,7 +96,7 @@
       position: absolute;
       left: 1.5rem;
       bottom: 3rem;
-      width: calc(100% - 4.5rem);
+      width: calc(100% - 3rem);
       height: 6px;
 
       border: none;
@@ -107,11 +108,11 @@
       }
       &::-webkit-progress-value {
         background: var(--color-nyong);
-        transition-duration: var(--time-short);
+        transition-duration: var(--time-long);
       }
       &::-moz-progress-bar {
         background: var(--color-nyong);
-        transition-duration: var(--time-short);
+        transition-duration: var(--time-long);
       }
     }
   }
