@@ -1,0 +1,1 @@
+<p class={$$props.class}>&copy; 2021 Doro-nyong</p>
