@@ -12,4 +12,4 @@ const app = express()
     if (err) console.log('error', err)
   })
 
-module.exports = app;
+export default app;
