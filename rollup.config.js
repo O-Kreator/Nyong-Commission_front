@@ -9,6 +9,9 @@ import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import sveltePreprocess from 'svelte-preprocess';
+import alias from '@rollup/plugin-alias';
+import includePaths from 'rollup-plugin-includepaths';
+import svelteSVG from 'rollup-plugin-svelte-svg';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -25,6 +28,24 @@ const preprocess = sveltePreprocess({
     plugins: [require('autoprefixer')],
   },
 });
+
+const aliasOptions = {
+	entries: [
+		{find: '_components', replacement: 'src/components'},
+		{find: '_styles', replacement: 'src/styles'},
+		{find: '_services', replacement: 'src/styles'},
+		{find: '_stores', replacement: 'src/stores'},
+		{find: '_static', replacement: 'static'},
+		{find: '_locales', replacement: '_locales'}
+	]
+}
+
+const includePathOptions = {
+	include: {},
+	paths: ['src'],
+	external: [],
+	extensions: ['.js', '.ts', '.html', '.svelte'],
+}
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
@@ -45,6 +66,12 @@ export default {
 					dev,
 					hydratable: true
 				},
+				onwarn: (warning, handler) => {
+					const {code, frame} = warning;
+					if (code === 'css-unused-selector')
+						return;
+					handler(warning);
+				},
 				preprocess
 			}),
 			url({
@@ -56,6 +83,9 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
+			alias(aliasOptions),
+			includePaths(includePathOptions),
+			svelteSVG({dev}),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -80,7 +110,7 @@ export default {
 		],
 
 		preserveEntrySignatures: false,
-		onwarn,
+		onwarn
 	},
 
 	server: {
@@ -108,12 +138,15 @@ export default {
 			resolve({
 				dedupe: ['svelte']
 			}),
-			commonjs()
+			commonjs(),
+			alias(aliasOptions),
+			includePaths(includePathOptions),
+			svelteSVG({generate: 'ssr', dev}),
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 
 		preserveEntrySignatures: 'strict',
-		onwarn,
+		onwarn
 	},
 
 	serviceworker: {
