@@ -1,0 +1,51 @@
+@import './mixin';
+
+:root {
+  --color-bright: white;
+  --color-dark: black;
+  --color-nyong-bright: #a6de60;
+  --color-nyong-dark: #507341;
+  --color-poroo-bright: #ff99aa;
+  --color-poroo-dark: #993344;
+
+  --space-xs: 0.5rem;
+  --space-s: 0.75rem;
+  --space-r: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2rem;
+
+  --time-short: 0.1s;
+  --time-long: 0.2s;
+
+  @include media-mobile-only {
+    --grid-count: 1;
+  }
+  @include media-tablet-only {
+    --grid-count: 2;
+  }
+  @include media-desktop-small-only {
+    --grid-count: 3;
+  }
+  @include media-desktop-regular {
+    --grid-count: 4;
+  }
+
+  --grid-width-full: calc(100vw - 6rem);
+  --grid-width-container: calc(100% - 6rem);
+  --grid-width-each-full: calc(var(--grid-width-full) / var(--grid-count));
+  --grid-width-each-container: calc(var(--grid-width-container) / var(--grid-count));
+}
+
+main {
+  --color-background: var(--color-bright);
+  --color-text: var(--color-dark);
+  --color-nyong: var(--color-nyong-bright);
+  --color-poroo: var(--color-poroo-bright);
+}
+
+main.theme_dark {
+  --color-background: var(--color-dark);
+  --color-text: var(--color-bright);
+  --color-nyong: var(--color-nyong-dark);
+  --color-poroo: var(--color-poroo-dark);
+}
