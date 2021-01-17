@@ -2,7 +2,7 @@
   "name": "nyong-commission_front",
   "description": "Frontend of Doro-nyong's Commission website.",
   "version": "0.0.1",
-  "license": "MIT license",
+  "license": "MIT",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
