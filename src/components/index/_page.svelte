@@ -82,6 +82,10 @@
       transition-property: left;
       transition-duration: 0.5s;
 
+      @include media-mobile-only {
+        --logo-text-width: calc(var(--grid-width-each-full));
+      }
+
       @include media-desktop-regular {
         --logo-text-width: calc(var(--grid-width-each-full) + 1.5rem);
 
