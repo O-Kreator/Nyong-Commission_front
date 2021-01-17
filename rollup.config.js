@@ -17,6 +17,10 @@ const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
+const replaceOptions = {
+	'process.env.URL_CDN': process.env.URL_CDN || '`images/arts`'
+};
+
 const preprocess = sveltePreprocess({
   scss: {
     includePaths: ['src'],
@@ -38,7 +42,7 @@ const aliasOptions = {
 		{find: '_static', replacement: 'static'},
 		{find: '_locales', replacement: '_locales'}
 	]
-}
+};
 
 const includePathOptions = {
 	include: {},
@@ -59,7 +63,8 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				...replaceOptions
 			}),
 			svelte({
 				compilerOptions: {
@@ -119,7 +124,8 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				...replaceOptions
 			}),
 			svelte({
 				compilerOptions: {
@@ -156,7 +162,8 @@ export default {
 			resolve(),
 			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				'process.env.NODE_ENV': JSON.stringify(mode),
+				...replaceOptions
 			}),
 			commonjs(),
 			!dev && terser()
