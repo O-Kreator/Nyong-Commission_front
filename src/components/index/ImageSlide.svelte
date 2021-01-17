@@ -14,7 +14,7 @@
 
   const slideImageFunc = {
     _make(imageName) {
-      const url = `${process.env.URL_CDN}/${imageName}.jpg`;
+      const url = `process.env.URL_CDN/${imageName}.jpg`;
       const altText = 'Placeholder text.';
 
       const imgDOM = document.createElement('img');

@@ -18,7 +18,7 @@ const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const replaceOptions = {
-	'process.env.URL_CDN': process.env.URL_CDN || '`images/arts`'
+	'process.env.URL_CDN': process.env.URL_CDN || 'images/arts'
 };
 
 const preprocess = sveltePreprocess({
