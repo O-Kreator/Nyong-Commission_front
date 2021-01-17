@@ -115,7 +115,7 @@ export default {
 
 	server: {
 		input: config.server.input(),
-		output: {...config.server.output(), exports: 'default'},
+		output: config.server.output(),
 		plugins: [
 			replace({
 				'process.browser': false,
