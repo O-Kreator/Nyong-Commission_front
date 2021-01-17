@@ -109,7 +109,7 @@ export default {
 			})
 		],
 
-		preserveEntrySignatures: 'strict',
+		preserveEntrySignatures: false,
 		onwarn
 	},
 
@@ -145,7 +145,7 @@ export default {
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 
-		preserveEntrySignatures: false,
+		preserveEntrySignatures: 'strict',
 		onwarn
 	},
 
