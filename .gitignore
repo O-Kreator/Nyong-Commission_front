@@ -17,3 +17,6 @@ yarn-error.log
 
 # Artworks
 /static/images/arts/
+
+# Vercel
+/.vercel/
