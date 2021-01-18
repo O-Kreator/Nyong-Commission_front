@@ -1,13 +1,22 @@
-<script>
+<script context="module">
+  import {isLoading, waitLocale} from 'svelte-i18n';
+
+  export async function preload() {
+    return waitLocale();
+  }
 </script>
 
-<main class="border-on">
-  <div class="border" />
-  <div class="border" />
-  <div class="border" />
-  <div class="border" />
-  <slot />
-</main>
+{#if $isLoading}
+  Loading...
+{:else}
+  <main class="border-on">
+    <div class="border" />
+    <div class="border" />
+    <div class="border" />
+    <div class="border" />
+    <slot />
+  </main>
+{/if}
 
 <style lang="scss">
   @import '../styles/config';
