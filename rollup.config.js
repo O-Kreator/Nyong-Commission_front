@@ -12,6 +12,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import alias from '@rollup/plugin-alias';
 import includePaths from 'rollup-plugin-includepaths';
 import svelteSVG from 'rollup-plugin-svelte-svg';
+import json from '@rollup/plugin-json';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -40,7 +41,7 @@ const aliasOptions = {
 		{find: '_services', replacement: 'src/styles'},
 		{find: '_stores', replacement: 'src/stores'},
 		{find: '_static', replacement: 'static'},
-		{find: '_locales', replacement: '_locales'}
+		{find: '_locales', replacement: 'locales'}
 	]
 };
 
@@ -91,6 +92,7 @@ export default {
 			alias(aliasOptions),
 			includePaths(includePathOptions),
 			svelteSVG({dev}),
+			json(),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
@@ -148,6 +150,7 @@ export default {
 			alias(aliasOptions),
 			includePaths(includePathOptions),
 			svelteSVG({generate: 'ssr', dev}),
+			json()
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 
