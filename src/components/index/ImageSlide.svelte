@@ -4,7 +4,7 @@
   const CONST_SHOWN_TIME = 8000;
   const CONST_TRANSITION_TIME = 1000;
   const CONST_TRANSITION_DELAY_TIME = CONST_TRANSITION_TIME / 50;
-  const CONST_TICK_FREQUENCY = 100;
+  const CONST_TICK_FREQUENCY = 500;
 
   const imageNames = ['slide_01', 'slide_02', 'slide_03', 'slide_04'];
 
@@ -107,12 +107,12 @@
         background: transparent;
       }
       &::-webkit-progress-value {
-        background: var(--color-nyong);
-        transition-duration: var(--time-long);
+        background: var(--color-nyong-bright);
+        transition-duration: var(--time-short);
       }
       &::-moz-progress-bar {
-        background: var(--color-nyong);
-        transition-duration: var(--time-long);
+        background: var(--color-nyong-bright);
+        transition-duration: var(--time-short);
       }
     }
   }
@@ -132,7 +132,13 @@
       object-fit: cover;
 
       opacity: 0;
-      transition-duration: 1s;
+      transition: opacity 1s, filter var(--time-long);
+
+      filter: brightness(1);
+      
+      :global(body.theme_dark) & {
+        filter: brightness(0.5);
+      }
 
       &.displayed {
         display: block;
