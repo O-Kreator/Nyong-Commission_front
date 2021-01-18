@@ -47,12 +47,13 @@
 
     & > :global(svg) {
       fill: var(--color-text);
-      transition: fill var(--time-short);
+      transition: fill var(--time-long);
     }
 
     &:hover > :global(svg),
     &:focus > :global(svg) {
-      fill: var(--color-nyong);
+      fill: var(--color-nyong-bright);
+      transition-duration: var(--time-short);
     }
   }
 </style>
