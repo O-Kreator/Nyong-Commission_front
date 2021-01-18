@@ -34,12 +34,19 @@
     width: 512px;
     transform: translate(-50%, -50%);
 
-    transition-duration: 0.5s;
+    transition-duration: var(--time-long);
 
-    & :global(.st0) {
+    & :global(path) {
       fill: transparent;
-      stroke: var(--color-nyong);
+      stroke: var(--color-nyong-bright);
       stroke-width: 0.125px;
+      opacity: 1;
+
+      transition: opacity var(--time-long);
+
+      :global(body.theme_dark) & {
+        opacity: 0.5;
+      }
     }
 
     @include media-desktop-regular {
@@ -59,7 +66,7 @@
     justify-content: center;
     align-items: center;
 
-    transition-duration: 0.5s;
+    transition-duration: var(--time-long);
 
     @include media-mobile-only {
       padding: 0;
@@ -73,6 +80,7 @@
     & > :global(svg.index-logo-text) {
       --logo-text-width: calc(var(--grid-width-each-full) + 3rem);
 
+      z-index: -1;
       position: absolute;
       top: calc(1.5rem - 2px);
       left: 50%;
@@ -80,7 +88,13 @@
       transform: translateX(calc(var(--logo-text-width) / 2 * -1));
 
       transition-property: left;
-      transition-duration: 0.5s;
+      transition-duration: var(--time-long);
+
+      & :global(path) {
+        fill: var(--color-nyong);
+
+        transition-duration: var(--time-long);
+      }
 
       @include media-mobile-only {
         --logo-text-width: calc(var(--grid-width-each-full));
@@ -101,6 +115,7 @@
       bottom: 1.5rem;
       line-height: 1.2;
 
+      transition-property: left, bottom;
       transition-duration: var(--time-short);
 
       @include media-desktop-regular {
@@ -116,7 +131,7 @@
     right: 1.5rem;
     bottom: 0;
 
-    transition-duration: 0.5s;
+    transition-duration: var(--time-long);
 
     @include media-desktop-regular {
       left: 50%;
