@@ -3,6 +3,7 @@
   import ContentsLeft from './ContentsLeft.svelte';
   import ImageSlide from './ImageSlide.svelte';
   import CopyrightText from '_components/commons/CopyrightText.svelte';
+  import BtnThemeToggle from '_components/commons/BtnThemeToggle.svelte';
 
   import LogoSymbol from '_static/images/logo_symbol.svg';
   import LogoText from '_static/images/logo_text.svg';
@@ -18,6 +19,7 @@
   <LogoText class="index-logo-text" />
   <ContentsLeft />
   <CopyrightText class="index-copyright-text" />
+  <BtnThemeToggle class="index-btn-theme-toggle" />
 </div>
 <div id="container-right">
   <ImageSlide />
@@ -120,6 +122,16 @@
 
       @include media-desktop-regular {
         left: -0.5rem;
+      }
+    }
+
+    & > :global(.index-btn-theme-toggle) {
+      position: absolute;
+      right: 0;
+      bottom: 2.5rem;
+
+      @include media-desktop-regular {
+        right: 1rem;
       }
     }
   }
