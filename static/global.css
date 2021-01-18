@@ -11,6 +11,9 @@ body {
   font-size: 16px;
   font-family: soleil, 'Noto Sans KR', sans-serif;
   line-height: 1.6;
+
+  color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 @media screen and (max-width: 480px) {

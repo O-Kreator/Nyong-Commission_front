@@ -61,4 +61,20 @@
       }
     }
   }
+
+  :global(body) {
+    --color-background: var(--color-bright);
+    --color-text: var(--color-dark);
+    --color-nyong: var(--color-nyong-bright);
+    --color-poroo: var(--color-poroo-bright);
+
+    transition: background var(--time-long);
+  }
+
+  :global(body.theme_dark) {
+    --color-background: var(--color-dark);
+    --color-text: var(--color-bright);
+    --color-nyong: var(--color-nyong-dark);
+    --color-poroo: var(--color-poroo-dark);
+  }
 </style>
