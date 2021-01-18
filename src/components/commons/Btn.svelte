@@ -9,7 +9,7 @@
 {#if href}
   <a class={`${styleType} ${themeChar} ${$$props.class}`} {href}><slot /></a>
 {:else if onClick}
-  <button class={`${styleType} ${themeChar} ${$$props.class}`} {onClick} {disabled}><slot /></button
+  <button class={`${styleType} ${themeChar} ${$$props.class}`} on:click={onClick} {disabled}><slot /></button
   >
 {/if}
 
@@ -17,7 +17,7 @@
   a,
   button {
     --btn-height: 3rem;
-    --btn-color: var(--color-nyong);
+    --btn-color: var(--color-nyong-bright);
 
     display: inline-block;
     padding: 0 var(--space-l);
@@ -35,6 +35,8 @@
       top: 0.4rem;
       margin-right: var(--space-xs);
       height: 1.5rem;
+
+      transition: fill var(--time-short);
     }
 
     &:not(:disabled) {
@@ -50,10 +52,19 @@
     color: var(--color-dark);
     background-color: var(--btn-color);
 
+    & > :global(svg) {
+      fill: var(--color-dark);
+    }
+
     &:not(:disabled) {
       &:hover,
       &:focus {
+        color: var(--color-text);
         background-color: var(--color-background);
+
+        & > :global(svg) {
+          fill: var(--color-text);
+        }
       }
     }
   }
