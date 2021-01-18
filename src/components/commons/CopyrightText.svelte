@@ -1,1 +1,1 @@
-<p class={$$props.class}>&copy; 2021 Doro-nyong</p>
+<p class={`${$$props.class} text-en`}>&copy; 2021 Doro-nyong</p>
