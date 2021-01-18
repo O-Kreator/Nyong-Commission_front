@@ -9,8 +9,9 @@
 {#if href}
   <a class={`${styleType} ${themeChar} ${$$props.class}`} {href}><slot /></a>
 {:else if onClick}
-  <button class={`${styleType} ${themeChar} ${$$props.class}`} on:click={onClick} {disabled}><slot /></button
-  >
+  <button class={`${styleType} ${themeChar} ${$$props.class}`} on:click={onClick} {disabled}>
+    <slot />
+  </button>
 {/if}
 
 <style lang="scss">
@@ -28,7 +29,7 @@
     border: 1px solid var(--btn-color);
     background: transparent;
 
-    transition-duration: var(--time-short);
+    transition-duration: var(--time-long);
 
     & > :global(svg) {
       position: relative;
@@ -36,11 +37,21 @@
       margin-right: var(--space-xs);
       height: 1.5rem;
 
-      transition: fill var(--time-short);
+      transition: fill var(--time-long);
     }
 
     &:not(:disabled) {
       cursor: pointer;
+
+      &:hover,
+      &:focus,
+      &:active {
+        transition-duration: var(--time-short);
+
+        & > :global(svg) {
+          transition-duration: var(--time-short);
+        }
+      }
 
       &:active {
         transform: translateY(2px);
