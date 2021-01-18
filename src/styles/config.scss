@@ -18,6 +18,9 @@
   --time-regular: 0.2s;
   --time-long: 0.5s;
 
+  --font-weight-bold-en: 900;
+  --font-weight-bold-ko: 700;
+
   @include media-mobile-only {
     --grid-count: 1;
   }

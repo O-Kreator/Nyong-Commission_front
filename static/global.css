@@ -1,19 +1,37 @@
 * {
   box-sizing: border-box;
+  word-break: keep-all;
+
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
 }
 
 html,
 body {
+  --font-weight-bold: var(--font-weight-bold-en);
+
   margin: 0;
   width: 100%;
   height: 100%;
 
   font-size: 16px;
-  font-family: soleil, 'Noto Sans KR', sans-serif;
+  font-family: soleil, 'source-han-sans-cjk-ko', sans-serif;
   line-height: 1.6;
 
   color: var(--color-text);
   background-color: var(--color-background);
+}
+
+html[lang="ko-KR"],
+html[lang="ko-KR"] body {
+  --font-weight-bold: var(--font-weight-bold-ko);
+  font-family: 'source-han-sans-cjk-ko', sans-serif;
+}
+
+.text-en {
+  font-family: soleil, 'source-han-sans-cjk-ko', sans-serif;
 }
 
 @media screen and (max-width: 480px) {
@@ -41,8 +59,8 @@ h4,
 h5,
 h6 {
   margin: 0 0 1.5rem 0;
-  font-weight: 900;
   line-height: 1.25;
+  font-weight: var(--font-weight-bold);
 }
 
 h1 {
