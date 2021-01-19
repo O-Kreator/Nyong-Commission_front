@@ -1,7 +1,7 @@
 <script>
-  import Bullet from '_components/commons/Bullet.svelte';
-  import Btn from '_components/commons/Btn.svelte';
-  import BtnLanguageToggle from '_components/commons/BtnLanguageToggle.svelte';
+  import Bullet from '_components/_commons/Bullet.svelte';
+  import Btn from '_components/_commons/Btn.svelte';
+  import BtnLanguageToggle from '_components/_commons/BtnLanguageToggle.svelte';
 
   import LogoSymbol from '_static/images/logo_symbol.svg';
   import IconPaperplane from '_static/images/icon_paperplane.svg';

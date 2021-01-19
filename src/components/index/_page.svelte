@@ -1,9 +1,9 @@
 <script>
-  import BackgroundGrid from '_components/commons/BackgroundGrid.svelte';
+  import BackgroundGrid from '_components/_commons/BackgroundGrid.svelte';
   import ContentsLeft from './ContentsLeft.svelte';
   import ImageSlide from './ImageSlide.svelte';
-  import CopyrightText from '_components/commons/CopyrightText.svelte';
-  import BtnThemeToggle from '_components/commons/BtnThemeToggle.svelte';
+  import CopyrightText from '_components/_commons/CopyrightText.svelte';
+  import BtnThemeToggle from '_components/_commons/BtnThemeToggle.svelte';
 
   import LogoSymbol from '_static/images/logo_symbol.svg';
   import LogoText from '_static/images/logo_text.svg';
