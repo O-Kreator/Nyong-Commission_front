@@ -21,8 +21,10 @@
     --btn-color: var(--color-nyong-bright);
 
     display: inline-block;
+    margin: 0;
     padding: 0 var(--space-l);
 
+    font-size: 1rem;
     text-decoration: none;
     line-height: calc(var(--btn-height) - 2px);
 
@@ -37,7 +39,7 @@
       margin-right: var(--space-xs);
       height: 1.5rem;
 
-      transition: fill var(--time-long);
+      transition: fill var(--time-long), height var(--time-long);
     }
 
     &:not(:disabled) {
