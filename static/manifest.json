@@ -1,8 +1,8 @@
 {
   "background_color": "#ffffff",
-  "theme_color": "#333333",
-  "name": "TODO",
-  "short_name": "TODO",
+  "theme_color": "#a6de60",
+  "name": "Doro-nyong's Commission",
+  "short_name": "Nyong Commission",
   "display": "minimal-ui",
   "start_url": "/",
   "icons": [
