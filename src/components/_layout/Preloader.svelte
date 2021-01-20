@@ -1,18 +1,36 @@
 <script>
+  import {stores} from '@sapper/app';
+  import {writable} from 'svelte/store';
+  import {isLoading as isLoadingLocale} from 'svelte-i18n';
   import {cubicInOut} from 'svelte/easing';
 
   import LogoSymbol from '_static/images/logo_symbol.svg';
 
-  let CONST_DURATION = 500;
+  let CONST_TRANSITION_DURATION = 500;
+  let CONST_DELAY = 1000;
 
   const transitionOut = () => ({
-    duration: CONST_DURATION,
+    duration: CONST_TRANSITION_DURATION,
     delay: 0,
     easing: cubicInOut,
     css: (t) => `opacity: ${t}`,
   });
 
-  export let isLoaded = false;
+  const {preloading} = stores();
+
+  const isPreloadingFirst = writable(true);
+  const unsubscribePreloadingFirst = preloading.subscribe(() => {
+    setTimeout(() => {
+      isPreloadingFirst.set($preloading);
+    }, CONST_DELAY);
+  });
+  isPreloadingFirst.subscribe(() => {
+    if (!$isPreloadingFirst) {
+      unsubscribePreloadingFirst();
+    }
+  });
+
+  $: isLoaded = !$isLoadingLocale && !$isPreloadingFirst;
 </script>
 
 {#if !isLoaded}

@@ -16,27 +16,12 @@
   import BackgroundGrid from '_components/_layout/BackgroundGrid.svelte';
   import NavTop from '_components/_layout/NavTop.svelte';
 
-  const CONST_PRELOAD_TIME_MIN = 1000;
-
-  const {page, preloading} = stores();
-
-  const isPreloadingFirst = writable(true);
-  const unsubscribePreloadingFirst = preloading.subscribe(() => {
-    setTimeout(() => {
-      isPreloadingFirst.set($preloading);
-    }, CONST_PRELOAD_TIME_MIN);
-  });
-  isPreloadingFirst.subscribe(() => {
-    if (!$isPreloadingFirst) {
-      unsubscribePreloadingFirst();
-    }
-  });
+  const {page} = stores();
 
   $: isIndex = $page.path === '/';
-  $: isLoaded = !$isLoadingLocale && !$isPreloadingFirst;
 </script>
 
-<Preloader {isLoaded} />
+<Preloader />
 <BorderAroundPage active={isIndex} />
 <BackgroundGrid width={isIndex ? 'full' : 'container'} />
 <main>
