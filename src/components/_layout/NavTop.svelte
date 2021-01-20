@@ -1,12 +1,22 @@
 <script>
+  import {cubicInOut} from 'svelte/easing';
   import NavTopLeft from './NavTopLeft.svelte';
   import NavTopRight from './NavTopRight.svelte';
 
   import {_} from 'svelte-i18n';
+
+  let CONST_DURATION = 500;
+
+  const transitionOut = () => ({
+    duration: CONST_DURATION,
+    delay: 0,
+    easing: cubicInOut,
+    css: (t) => `opacity: ${t}`,
+  });
 </script>
 
 {#if $$props.isShown}
-  <div id="nav-wrapper">
+  <div id="nav-wrapper" out:transitionOut>
     <nav>
       <NavTopLeft />
       <NavTopRight />
