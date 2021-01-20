@@ -7,17 +7,17 @@
     duration: CONST_DURATION,
     delay: 0,
     easing: cubicInOut,
-    css: (t) => `opacity: ${t}`
+    css: (t) => `opacity: ${t}`,
   });
 
   const transitionOut = () => ({
     duration: CONST_DURATION,
     delay: 0,
     easing: cubicInOut,
-    css: (t) => `opacity: ${t}`
+    css: (t) => `opacity: ${t}`,
   });
 </script>
 
 <div in:transitionIn out:transitionOut>
- <slot />
+  <slot />
 </div>
