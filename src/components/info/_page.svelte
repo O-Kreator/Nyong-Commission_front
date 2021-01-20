@@ -5,6 +5,10 @@
   import {_} from 'svelte-i18n';
 </script>
 
+<svelte:head>
+  <title>Information - Doro-nyong's Commission</title>
+</svelte:head>
+
 <Container hasMarginTop={true}>
   <h1><Bullet />{$_('commons.under-construction')}</h1>
 </Container>
