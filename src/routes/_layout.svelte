@@ -6,70 +6,30 @@
   }
 </script>
 
+<script>
+  import {stores} from '@sapper/app';
+  import BorderAroundPage from '_components/_layout/BorderAroundPage.svelte';
+  import BackgroundGrid from '_components/_layout/BackgroundGrid.svelte';
+  import NavTop from '_components/_layout/NavTop.svelte';
+
+  const {page} = stores();
+  $: isIndex = $page.path === '/';
+</script>
+
+<BorderAroundPage active={isIndex} />
+<BackgroundGrid width={isIndex ? 'full' : 'container'} />
+
 {#if $isLoading}
   Loading...
 {:else}
-  <main class="border-on">
-    <div class="border" />
-    <div class="border" />
-    <div class="border" />
-    <div class="border" />
+  <main>
+    <NavTop isShown={!isIndex} />
     <slot />
   </main>
 {/if}
 
 <style lang="scss">
   @import '../styles/config';
-
-  main {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    & > div.border {
-      z-index: 10;
-      position: fixed;
-      background: var(--color-nyong);
-      width: 0;
-      height: 0;
-
-      transition-duration: 0.5s;
-
-      &:nth-child(1) {
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-      &:nth-child(2) {
-        bottom: 0;
-        left: 0;
-        width: 100%;
-      }
-      &:nth-child(3) {
-        top: 0;
-        left: 0;
-        height: 100%;
-      }
-      &:nth-child(4) {
-        top: 0;
-        right: 0;
-        height: 100%;
-      }
-    }
-
-    &.border-on > div.border {
-      &:nth-child(1),
-      &:nth-child(2) {
-        height: 1.5rem;
-      }
-      &:nth-child(3),
-      &:nth-child(4) {
-        width: 1.5rem;
-      }
-    }
-  }
 
   :global(body) {
     --color-background: var(--color-bright);
@@ -78,6 +38,12 @@
     --color-poroo: var(--color-poroo-bright);
 
     transition: background var(--time-long);
+
+    --color-border: var(--color-nyong);
+
+    &.char-poroo {
+      --color-border: var(--color-poroo);
+    }
   }
 
   :global(body.theme_dark) {
@@ -85,5 +51,13 @@
     --color-text: var(--color-bright);
     --color-nyong: var(--color-nyong-dark);
     --color-poroo: var(--color-poroo-dark);
+  }
+
+  main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 </style>
