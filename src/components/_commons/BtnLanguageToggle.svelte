@@ -9,7 +9,7 @@
 </script>
 
 <button class={`${$$props.class} ${$locale === 'ko-KR' && 'text-en'}`} on:click={changeLangToNext}>
-  {$_(`common.change-lang-to-next`)}
+  {$_(`commons.change-lang`)}
 </button>
 
 <style lang="scss">
@@ -23,12 +23,13 @@
     font-size: 1rem;
     line-height: 1;
     text-decoration: underline;
+    white-space: nowrap;
 
     transform: translateY(0);
 
     cursor: pointer;
 
-    transition: color var(--time-long), transform var(--time-short);
+    transition: color var(--time-long), font-size var(--time-long), transform var(--time-short);
 
     &:hover,
     &:focus {
