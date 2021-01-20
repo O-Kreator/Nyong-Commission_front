@@ -14,6 +14,11 @@
   --space-l: 1.5rem;
   --space-xl: 2rem;
 
+  --height-nav: 7rem;
+  @include media-mobile-only {
+    --height-nav: 5rem;
+  }
+
   --time-short: 0.1s;
   --time-regular: 0.2s;
   --time-long: 0.5s;
