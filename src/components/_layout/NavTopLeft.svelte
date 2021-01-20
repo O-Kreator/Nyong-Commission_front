@@ -12,7 +12,7 @@
 
 <style lang="scss">
   @import '../../styles/mixin';
-  
+
   #nav-top-left {
     display: flex;
     align-items: center;

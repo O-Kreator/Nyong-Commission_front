@@ -22,13 +22,9 @@
     border-radius: 50%;
     background: var(--bullet-color);
 
-    transition:
-      top var(--time-short),
-      left var(--time-short),
-      right var(--time-short),
-      bottom var(--time-short),
-      background var(--time-long);
-    
+    transition: top var(--time-short), left var(--time-short), right var(--time-short),
+      bottom var(--time-short), background var(--time-long);
+
     &::before {
       content: '';
       position: absolute;
@@ -40,12 +36,8 @@
       border-radius: 50%;
       border: 1px solid var(--bullet-color);
 
-      transition:
-        top var(--time-short),
-        left var(--time-short),
-        right var(--time-short),
-        bottom var(--time-short),
-        border var(--time-long);
+      transition: top var(--time-short), left var(--time-short), right var(--time-short),
+        bottom var(--time-short), border var(--time-long);
     }
 
     &.poroo {

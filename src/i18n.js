@@ -3,14 +3,14 @@ import {register, init, getLocaleFromNavigator, locale as $locale} from 'svelte-
 const initOptions = {
   fallbackLocale: 'en',
   initialLocale: getLocaleFromNavigator(),
-}
+};
 
 let currentLocale = null;
 
 register('en', () => import('_locales/en.json'));
 register('ko-KR', () => import('_locales/ko.json'));
 
-$locale.subscribe(value => {
+$locale.subscribe((value) => {
   if (value == null) return;
 
   currentLocale = value;

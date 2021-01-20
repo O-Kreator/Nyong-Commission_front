@@ -3,13 +3,13 @@
     return this.fetch(`blog.json`)
       .then((r) => r.json())
       .then((posts) => {
-        return {posts}
-      })
+        return {posts};
+      });
   }
 </script>
 
 <script>
-  export let posts
+  export let posts;
 </script>
 
 <svelte:head>
