@@ -13,9 +13,9 @@
   <LogoSymbol class="logo-symbol" />
   <h1><Bullet />{$_('index.catchphrase')}</h1>
   <Btn class="index-btn index-btn-commission" onClick={() => {}}>
-    <IconPaperplane />{$_('index.btn-commission-me')}
+    <IconPaperplane />{$_('commons.commission-me')}
   </Btn>
-  <Btn class="index-btn" onClick={() => {}} styleType="secondary">{$_('index.btn-see-info')}</Btn>
+  <Btn class="index-btn" href="/info" styleType="secondary">{$_('index.see-info')}</Btn>
   <BtnLanguageToggle class="index-btn-language-toggle" />
 </div>
 
