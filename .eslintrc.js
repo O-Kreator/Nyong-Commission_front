@@ -1,16 +1,18 @@
-module.export = {
+module.exports = {
+  extends: ['eslint:recommended'],
+  parserOptions: {
+    sourceType: 'module',
+    ecmaVersion: 2021,
+    ecmaFeatures: {
+      modules: true,
+    },
+  },
   env: {
     browser: true,
     es6: true,
     node: true,
   },
-  parser: 'babel-eslint',
-  parserOptions: {
-    ecmaVersion: 2021,
-    sourceType: 'module',
-  },
   plugins: ['svelte3'],
-  extends: ['eslint:recommended'],
   overrides: [
     {
       files: ['**/*.svelte'],
@@ -25,4 +27,7 @@ module.export = {
     'no-multi-spaces': 'error',
     'no-unused-vars': 'warn',
   },
+  settings: {
+    'svelte3/ignore-styles': () => true,
+  }
 };

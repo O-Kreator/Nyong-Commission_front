@@ -14,7 +14,7 @@ const app = express()
     sirv('static', {dev}),
     i18nMiddleware(),
     sapper.middleware()
-    );
+  );
 app.listen(PORT, (err) => {if (err) console.log('error', err)});
 
 export default app;

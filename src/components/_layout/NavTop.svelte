@@ -3,8 +3,6 @@
   import NavTopLeft from './NavTopLeft.svelte';
   import NavTopRight from './NavTopRight.svelte';
 
-  import {_} from 'svelte-i18n';
-
   let CONST_DURATION = 500;
 
   const transitionOut = () => ({
