@@ -1,5 +1,5 @@
 <script>
-  import {onMount} from 'svelte';
+  import {onMount, onDestroy} from 'svelte';
 
   const CONST_SHOWN_TIME = 8000;
   const CONST_TRANSITION_TIME = 1000;
@@ -12,30 +12,9 @@
   let progressMs = 0;
   let current = 0;
 
+  let finalizeParam;
+
   const slideImageFunc = {
-    _make(imageName) {
-      const url = `process.env.URL_CDN/${imageName}.jpg`;
-      const altText = 'Placeholder text.';
-
-      const imgDOM = document.createElement('img');
-      imgDOM.setAttribute('src', url);
-      imgDOM.setAttribute('alt', altText);
-      return imgDOM;
-    },
-    makeList(imageNames) {
-      const imgDOMList = [];
-
-      for (let imageName of imageNames) {
-        imgDOMList.push(this._make(imageName));
-      }
-      imgDOMList[0].classList.add('displayed', 'shown');
-      return imgDOMList;
-    },
-    appendList(imgDOMList, dest) {
-      for (let imageDOM of imgDOMList) {
-        dest.appendChild(imageDOM);
-      }
-    },
     show(image) {
       image.classList.add('displayed');
       setTimeout(() => {
@@ -64,23 +43,32 @@
     },
   };
 
-  const init = () => {
-    slideImageFunc.appendList(slideImageFunc.makeList(imageNames), imageWrapper);
-
-    setInterval(() => {
+  const initializeFunc = () => {
+    finalizeParam = setInterval(() => {
       slideTimeFunc.tick();
+      if (progressMs >= CONST_SHOWN_TIME) {
+        slideImageFunc.slide(imageWrapper);
+        slideTimeFunc.reset();
+      }
     }, CONST_SHOWN_TIME / CONST_TICK_FREQUENCY);
-    setInterval(() => {
-      slideImageFunc.slide(imageWrapper);
-      slideTimeFunc.reset();
-    }, CONST_SHOWN_TIME);
-  }
+  };
 
-  onMount(init);
+  onMount(initializeFunc);
+  onDestroy(() => {
+    clearInterval(finalizeParam);
+  });
 </script>
 
 <div id="container">
-  <div bind:this={imageWrapper} id="image-wrapper" />
+  <div bind:this={imageWrapper} id="image-wrapper">
+    {#each imageNames as imageName, i}
+      <img
+        src="process.env.URL_CDN/{imageName}.jpg"
+        alt="Placeholder text."
+        class={i === 0 ? 'displayed shown' : ''}
+      />
+    {/each}
+  </div>
   <progress max={CONST_SHOWN_TIME} value={progressMs} />
 </div>
 
@@ -135,7 +123,7 @@
       transition: opacity 1s, filter var(--time-long);
 
       filter: brightness(1);
-      
+
       :global(body.theme_dark) & {
         filter: brightness(0.5);
       }
