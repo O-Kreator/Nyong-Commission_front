@@ -1,5 +1,4 @@
 <script>
-  import BackgroundGrid from '_components/_commons/BackgroundGrid.svelte';
   import ContentsLeft from './ContentsLeft.svelte';
   import ImageSlide from './ImageSlide.svelte';
   import CopyrightText from '_components/_commons/CopyrightText.svelte';
@@ -13,7 +12,6 @@
   <title>Doro-nyong's Commission</title>
 </svelte:head>
 
-<BackgroundGrid width="full" />
 <div id="container-left">
   <LogoSymbol class="index-logo-symbol-background" />
   <LogoText class="index-logo-text" />
