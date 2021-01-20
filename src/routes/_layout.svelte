@@ -16,7 +16,7 @@
   import BackgroundGrid from '_components/_layout/BackgroundGrid.svelte';
   import NavTop from '_components/_layout/NavTop.svelte';
 
-  const CONST_PRELOAD_TIME_MIN = 200;
+  const CONST_PRELOAD_TIME_MIN = 1000;
 
   const {page, preloading} = stores();
 
