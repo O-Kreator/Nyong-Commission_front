@@ -17,7 +17,7 @@ body {
   height: 100%;
 
   font-size: 16px;
-  font-family: soleil, 'source-han-sans-cjk-ko', sans-serif;
+  font-family: soleil, 'Noto Sans KR', sans-serif;
   line-height: 1.6;
 
   color: var(--color-text);
@@ -27,11 +27,11 @@ body {
 html[lang="ko-KR"],
 html[lang="ko-KR"] body {
   --font-weight-bold: var(--font-weight-bold-ko);
-  font-family: 'source-han-sans-cjk-ko', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .text-en {
-  font-family: soleil, 'source-han-sans-cjk-ko', sans-serif;
+  font-family: soleil, 'Noto Sans KR', sans-serif;
 }
 
 @media screen and (max-width: 480px) {
