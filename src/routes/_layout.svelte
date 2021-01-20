@@ -1,5 +1,5 @@
 <script context="module">
-  import {isLoading, waitLocale} from 'svelte-i18n';
+  import {waitLocale} from 'svelte-i18n';
 
   export async function preload() {
     return waitLocale();
@@ -8,25 +8,41 @@
 
 <script>
   import {stores} from '@sapper/app';
+  import {writable} from 'svelte/store';
+  import {isLoading as isLoadingLocale} from 'svelte-i18n';
+
+  import Preloader from '_components/_layout/Preloader.svelte';
   import BorderAroundPage from '_components/_layout/BorderAroundPage.svelte';
   import BackgroundGrid from '_components/_layout/BackgroundGrid.svelte';
   import NavTop from '_components/_layout/NavTop.svelte';
 
-  const {page} = stores();
+  const CONST_PRELOAD_TIME_MIN = 200;
+
+  const {page, preloading} = stores();
+
+  const isPreloadingFirst = writable(true);
+  const unsubscribePreloadingFirst = preloading.subscribe(() => {
+    setTimeout(() => {
+      isPreloadingFirst.set($preloading);
+    }, CONST_PRELOAD_TIME_MIN);
+  });
+  isPreloadingFirst.subscribe(() => {
+    if (!$isPreloadingFirst) {
+      unsubscribePreloadingFirst();
+    }
+  });
+
   $: isIndex = $page.path === '/';
+  $: isLoaded = !$isLoadingLocale && !$isPreloadingFirst;
 </script>
 
+<Preloader {isLoaded} />
 <BorderAroundPage active={isIndex} />
 <BackgroundGrid width={isIndex ? 'full' : 'container'} />
-
-{#if $isLoading}
-  Loading...
-{:else}
-  <main>
-    <NavTop isShown={!isIndex} />
-    <slot />
-  </main>
-{/if}
+<main>
+  <NavTop isShown={!isIndex} />
+  <slot />
+</main>
 
 <style lang="scss">
   @import '../styles/config';
@@ -51,6 +67,22 @@
     --color-text: var(--color-bright);
     --color-nyong: var(--color-nyong-dark);
     --color-poroo: var(--color-poroo-dark);
+  }
+
+  @keyframes main-transition {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  #layout-wrapper {
+    animation-name: main-transition;
+    animation-duration: var(--time-long);
+    animation-iteration-count: once;
   }
 
   main {
