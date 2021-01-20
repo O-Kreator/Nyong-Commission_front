@@ -105,10 +105,26 @@
     }
   }
 
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(4rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   #image-wrapper {
     width: 100%;
     height: 100%;
     overflow: hidden;
+
+    animation-name: slide-in;
+    animation-duration: var(--time-long);
+    animation-iteration-count: once;
 
     & > :global(img) {
       z-index: -1;
