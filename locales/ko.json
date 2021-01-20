@@ -1,10 +1,11 @@
 {
-  "common": {
-    "change-lang-to-next": "in English"
+  "commons": {
+    "change-lang": "in English",
+    "commission-me": "커미션 신청하기",
+    "under-construction": "현재 공사 중입니다."
   },
   "index": {
     "catchphrase": "원하는 그림이 있으신가요? 믿고 맡겨주세요.",
-    "btn-commission-me": "커미션 신청하기",
-    "btn-see-info": "자세히 알아보기"
+    "see-info": "자세히 알아보기"
   }
 }
