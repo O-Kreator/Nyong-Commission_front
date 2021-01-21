@@ -1,10 +1,13 @@
 <script>
+  import FooterBtnPoroo from '_components/_layout/FooterBtnPoroo.svelte';
+
   import {_} from 'svelte-i18n';
 </script>
 
 <div id="footer-right">
   <div>
-    <a href="/">{$_('commons.conditions-of-use')}</a><a href="/">{$_('commons.privacy-notice')}</a>
+    <a href="/">{$_('commons.conditions-of-use')}</a><a href="/">{$_('commons.privacy-notice')}</a
+    ><FooterBtnPoroo />
   </div>
 </div>
 
@@ -27,12 +30,18 @@
     & > div {
       margin: 0;
 
+      line-height: 1;
+
+      & > :global(*) {
+        vertical-align: middle;
+      }
+
+      & > :global(*:not(:first-child)) {
+        margin-left: 1rem;
+      }
+
       & > a {
         font-size: 1rem;
-
-        &:not(:first-child) {
-          margin-left: 1rem;
-        }
       }
     }
   }
