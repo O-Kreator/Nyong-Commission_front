@@ -56,12 +56,6 @@
     }
   }
 
-  #layout-wrapper {
-    animation-name: main-transition;
-    animation-duration: var(--time-long);
-    animation-iteration-count: once;
-  }
-
   main {
     position: absolute;
     top: 0;
