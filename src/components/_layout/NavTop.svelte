@@ -1,4 +1,5 @@
 <script>
+  import {stores} from '@sapper/app';
   import {cubicInOut} from 'svelte/easing';
   import NavTopLeft from './NavTopLeft.svelte';
   import NavTopRight from './NavTopRight.svelte';
@@ -11,9 +12,12 @@
     easing: cubicInOut,
     css: (t) => `opacity: ${t}`,
   });
+
+  const {page} = stores();
+  $: isIndex = $page.path === '/';
 </script>
 
-{#if $$props.isShown}
+{#if !isIndex}
   <div id="nav-wrapper" out:transitionOut>
     <nav>
       <NavTopLeft />

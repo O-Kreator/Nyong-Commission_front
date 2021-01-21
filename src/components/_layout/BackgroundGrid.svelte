@@ -1,8 +1,11 @@
 <script>
-  export let width = 'container';
+  import {stores} from '@sapper/app';
+
+  const {page} = stores();
+  $: isIndex = $page.path === '/';
 </script>
 
-<div class={width} />
+<div class={isIndex ? 'full' : 'container'} />
 
 <style lang="scss">
   div {

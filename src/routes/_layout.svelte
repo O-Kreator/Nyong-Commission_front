@@ -7,25 +7,17 @@
 </script>
 
 <script>
-  import {stores} from '@sapper/app';
-  import {writable} from 'svelte/store';
-  import {isLoading as isLoadingLocale} from 'svelte-i18n';
-
   import Preloader from '_components/_layout/Preloader.svelte';
   import BorderAroundPage from '_components/_layout/BorderAroundPage.svelte';
   import BackgroundGrid from '_components/_layout/BackgroundGrid.svelte';
   import NavTop from '_components/_layout/NavTop.svelte';
-
-  const {page} = stores();
-
-  $: isIndex = $page.path === '/';
 </script>
 
 <Preloader />
-<BorderAroundPage active={isIndex} />
-<BackgroundGrid width={isIndex ? 'full' : 'container'} />
+<BorderAroundPage />
+<BackgroundGrid />
 <main>
-  <NavTop isShown={!isIndex} />
+  <NavTop />
   <slot />
 </main>
 

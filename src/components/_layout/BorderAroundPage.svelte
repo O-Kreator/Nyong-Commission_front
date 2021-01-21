@@ -1,5 +1,12 @@
-<div class={`border-hor ${$$props.active && 'active'}`} />
-<div class={`border-ver ${$$props.active && 'active'}`} />
+<script>
+  import {stores} from '@sapper/app';
+
+  const {page} = stores();
+  $: isIndex = $page.path === '/';
+</script>
+
+<div class={`border-hor ${isIndex && 'active'}`} />
+<div class={`border-ver ${isIndex && 'active'}`} />
 
 <style lang="scss">
   .border-hor {
