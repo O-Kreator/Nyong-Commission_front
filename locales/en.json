@@ -2,7 +2,9 @@
   "commons": {
     "change-lang": "한국어로 보기",
     "commission-me": "Commission me",
-    "under-construction": "Under construction now."
+    "under-construction": "Under construction now.",
+    "conditions-of-use": "Conditions of use",
+    "privacy-notice": "Privacy notice"
   },
   "index": {
     "catchphrase": "Trust me, I can draw what you want.",
