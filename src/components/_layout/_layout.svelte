@@ -1,24 +1,20 @@
-<script context="module">
-  import {waitLocale} from 'svelte-i18n';
-
-  export async function preload() {
-    return waitLocale();
-  }
-</script>
-
 <script>
   import Preloader from '_components/_layout/Preloader.svelte';
   import BorderAroundPage from '_components/_layout/BorderAroundPage.svelte';
   import BackgroundGrid from '_components/_layout/BackgroundGrid.svelte';
-  import NavTop from '_components/_layout/NavTop.svelte';
+  import Nav from '_components/_layout/Nav.svelte';
+  import Footer from '_components/_layout/Footer.svelte';
 </script>
 
 <Preloader />
 <BorderAroundPage />
 <BackgroundGrid />
 <main>
-  <NavTop />
-  <slot />
+  <Nav />
+  <div id="slot-wrapper">
+    <slot />
+  </div>
+  <Footer />
 </main>
 
 <style lang="scss">
@@ -32,9 +28,11 @@
 
     transition: background var(--time-long);
 
+    --color-hover: var(--color-nyong);
     --color-border: var(--color-nyong);
 
     &.char-poroo {
+      --color-hover: var(--color-poroo);
       --color-border: var(--color-poroo);
     }
   }
@@ -56,11 +54,32 @@
     }
   }
 
+  :global(a) {
+    color: var(--color-text);
+
+    transition-duration: var(--time-long);
+
+    &:hover,
+    &:focus {
+      color: var(--color-hover);
+
+      transition-duration: var(--time-short);
+    }
+  }
+
   main {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #slot-wrapper {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
   }
 </style>
