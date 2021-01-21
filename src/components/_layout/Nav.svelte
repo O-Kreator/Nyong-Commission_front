@@ -1,8 +1,8 @@
 <script>
   import {stores} from '@sapper/app';
   import {cubicInOut} from 'svelte/easing';
-  import NavTopLeft from './NavTopLeft.svelte';
-  import NavTopRight from './NavTopRight.svelte';
+  import NavLeft from './NavLeft.svelte';
+  import NavRight from './NavRight.svelte';
 
   let CONST_DURATION = 500;
 
@@ -20,8 +20,8 @@
 {#if !isIndex}
   <div id="nav-wrapper" out:transitionOut>
     <nav>
-      <NavTopLeft />
-      <NavTopRight />
+      <NavLeft />
+      <NavRight />
     </nav>
   </div>
 {/if}
@@ -44,7 +44,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 7rem;
+    height: var(--height-nav);
 
     border-bottom: 1px solid transparent;
 
@@ -57,10 +57,6 @@
     & {
       background: var(--color-background);
       border-bottom: 1px solid var(--color-nyong);
-    }
-
-    @include media-mobile-only {
-      height: 5rem;
     }
 
     & > nav {
