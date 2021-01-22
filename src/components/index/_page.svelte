@@ -26,35 +26,6 @@
 <style lang="scss">
   @import '../../styles/mixin';
 
-  :global(.index-logo-symbol-background) {
-    z-index: -10;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 512px;
-    transform: translate(-50%, -50%);
-
-    transition-duration: var(--time-long);
-
-    & :global(path) {
-      fill: transparent;
-      stroke: var(--color-nyong-bright);
-      stroke-width: 0.125px;
-      opacity: 1;
-
-      transition: opacity var(--time-long);
-
-      :global(body.theme_dark) & {
-        opacity: 0.5;
-      }
-    }
-
-    @include media-desktop-regular {
-      left: -3rem;
-      transform: translate(0, -50%);
-    }
-  }
-
   #container-left {
     position: absolute;
     top: 0rem;
@@ -138,6 +109,35 @@
       @include media-desktop-regular {
         right: 1rem;
       }
+    }
+  }
+
+  :global(.index-logo-symbol-background) {
+    z-index: -10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 512px;
+    transform: translate(-50%, -50%);
+
+    transition-duration: var(--time-long);
+
+    & :global(path) {
+      fill: transparent;
+      stroke: var(--color-nyong-bright);
+      stroke-width: 0.125px;
+      opacity: 1;
+
+      transition: opacity var(--time-long);
+
+      :global(body.theme_dark) & {
+        opacity: 0.5;
+      }
+    }
+
+    @include media-desktop-regular {
+      left: -3rem;
+      transform: translate(0, -50%);
     }
   }
 
