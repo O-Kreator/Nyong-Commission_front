@@ -91,12 +91,6 @@
     flex-direction: column;
     height: 100%;
 
-    transition-duration: var(--time-long);
-
-    & > :global(div) {
-      transition-duration: var(--time-long);
-    }
-
     & > #slot-wrapper {
       flex-grow: 1;
       flex-shrink: 0;
