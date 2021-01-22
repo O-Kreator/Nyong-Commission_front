@@ -8,6 +8,9 @@
   --color-poroo-bright: #ff99aa;
   --color-poroo-dark: #993344;
 
+  --color-test-red: rgba(255, 0, 0, 0.3);
+  --color-test-green: rgba(0, 255, 0, 0.3);
+
   --space-xs: 0.5rem;
   --space-s: 0.75rem;
   --space-r: 1rem;
@@ -15,8 +18,10 @@
   --space-xl: 2rem;
 
   --height-nav: 7rem;
+  --height-footer: 7.5rem;
   @include media-mobile-only {
     --height-nav: 5rem;
+    --height-footer: 12rem;
   }
 
   --time-short: 0.1s;
