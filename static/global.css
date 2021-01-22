@@ -5,7 +5,11 @@
   letter-spacing: -0.01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -69,4 +73,9 @@ code {
   font-family: monospace;
   font-size: calc(1em - 2px);
   padding: 0.2em 0.4em;
+}
+
+::selection {
+  color: var(--color-background);
+  background: rgba(166, 222, 96, 0.5);
 }
