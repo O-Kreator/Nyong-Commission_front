@@ -13,7 +13,7 @@
     &::before,
     &::after {
       content: '';
-      z-index: 1;
+      z-index: 10;
       position: fixed;
       left: 0;
       right: 0;
@@ -41,7 +41,7 @@
     &::before,
     &::after {
       content: '';
-      z-index: 1;
+      z-index: 10;
       position: fixed;
       top: 0;
       bottom: 0;
