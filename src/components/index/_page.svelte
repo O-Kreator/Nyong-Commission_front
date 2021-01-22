@@ -28,7 +28,7 @@
 
   :global(.index-logo-symbol-background) {
     z-index: -10;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     width: 512px;
@@ -56,7 +56,7 @@
   }
 
   #container-left {
-    position: fixed;
+    position: absolute;
     top: 0rem;
     left: 2.5rem;
     right: 2.5rem;
@@ -87,7 +87,9 @@
       width: var(--logo-text-width);
       transform: translateX(calc(var(--logo-text-width) / 2 * -1));
 
-      transition-property: left;
+      opacity: 1;
+
+      transition-property: top, left, opacity;
       transition-duration: var(--time-long);
 
       & :global(path) {
@@ -98,6 +100,11 @@
 
       @include media-mobile-only {
         --logo-text-width: calc(var(--grid-width-each-full));
+
+        @media screen and (max-height: 575px) {
+          top: -1.5rem;
+          opacity: 0;
+        }
       }
 
       @include media-desktop-regular {
