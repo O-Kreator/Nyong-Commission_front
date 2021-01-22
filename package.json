@@ -16,8 +16,7 @@
     "express": "^4.17.1",
     "polka": "next",
     "sirv": "^1.0.0",
-    "svelte-i18n": "^3.3.0",
-    "svelte-slimscroll": "^1.0.6"
+    "svelte-i18n": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -47,6 +46,7 @@
     "sass": "^1.32.4",
     "svelte": "^3.17.3",
     "svelte-preprocess": "^4.6.1",
+    "svelte-slimscroll": "^1.0.6",
     "vercel-sapper": "^0.43.0"
   }
 }
