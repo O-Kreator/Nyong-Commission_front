@@ -1,11 +1,25 @@
 <script>
   import {stores} from '@sapper/app';
+  import {slimscroll} from 'svelte-slimscroll';
 
   import Preloader from '_components/_layout/Preloader.svelte';
   import BorderAroundPage from '_components/_layout/BorderAroundPage.svelte';
   import BackgroundGrid from '_components/_layout/BackgroundGrid.svelte';
   import Nav from '_components/_layout/Nav.svelte';
   import Footer from '_components/_layout/Footer.svelte';
+
+  const slimscrollOptions = {
+    width: '100%',
+    height: '100%',
+    distance: 0,
+    opacity: 0.5,
+    alwaysVisible: true,
+    wrapperClass: 'scroll-wrapper',
+    railClass: 'scroll-bg',
+    barClass: 'scroll-bar',
+    color: 'var(--color-text)',
+    borderRadius: 0,
+  };
 
   const {page} = stores();
   $: isIndex = $page.path === '/';
@@ -14,13 +28,15 @@
 <Preloader />
 <BorderAroundPage />
 <BackgroundGrid />
-<main class={isIndex ? 'fix-height' : ''}>
-  <Nav />
-  <div id="slot-wrapper">
-    <slot />
-  </div>
-  <Footer />
-</main>
+<div id="scroll-root-wrapper" use:slimscroll={slimscrollOptions}>
+  <main class={isIndex ? 'fix-height' : ''}>
+    <Nav />
+    <div id="slot-wrapper">
+      <slot />
+    </div>
+    <Footer />
+  </main>
+</div>
 
 <style lang="scss">
   @import '../../styles/config';
@@ -44,7 +60,7 @@
     --color-poroo: var(--color-poroo-bright);
 
     transition: background var(--time-long);
-    // overflow: hidden;
+    overflow: hidden;
 
     --color-hover: var(--color-nyong);
     --color-border: var(--color-nyong);
@@ -83,6 +99,15 @@
 
       transition-duration: var(--time-short);
     }
+  }
+
+  :global(div.scroll-bg) {
+    width: var(--space-xs) !important;
+  }
+
+  :global(div.scroll-bar) {
+    width: var(--space-xs) !important;
+    transition: background var(--time-long);
   }
 
   main {
