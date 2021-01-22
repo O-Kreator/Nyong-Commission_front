@@ -14,7 +14,7 @@
     &::after {
       content: '';
       z-index: 1;
-      position: absolute;
+      position: fixed;
       left: 0;
       right: 0;
       height: 0;
@@ -42,7 +42,7 @@
     &::after {
       content: '';
       z-index: 1;
-      position: absolute;
+      position: fixed;
       top: 0;
       bottom: 0;
       width: 0;
