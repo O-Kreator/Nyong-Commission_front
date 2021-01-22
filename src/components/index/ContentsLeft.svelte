@@ -40,6 +40,10 @@
     }
 
     & > h1 {
+      @include media-desktop-regular {
+        font-size: min(calc(120vw / 120 + 1.4rem), 2.4rem);
+      }
+
       @include media-mobile-only {
         font-size: 1.75rem;
       }
