@@ -46,13 +46,9 @@
     margin: 0 auto;
     padding: 0;
     width: 100%;
-    min-height: 7.5rem;
+    height: var(--height-footer);
 
     transition-duration: var(--time-long);
-
-    @include media-mobile-only {
-      padding: 3rem 0;
-    }
 
     & > div {
       position: relative;

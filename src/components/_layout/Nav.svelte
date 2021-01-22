@@ -45,6 +45,8 @@
     left: 0;
     right: 0;
     height: var(--height-nav);
+    flex-grow: 1;
+    flex-shrink: 0;
 
     border-bottom: 1px solid transparent;
 
