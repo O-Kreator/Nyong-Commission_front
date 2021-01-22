@@ -20,6 +20,8 @@
 </div>
 
 <style lang="scss">
+  @import '../../styles/mixin';
+
   div.container {
     text-align: center;
 
@@ -27,7 +29,20 @@
       width: 8rem;
       margin-bottom: var(--space-xs);
 
-      transition-duration: var(--time-short);
+      opacity: 1;
+
+      transition-duration: var(--time-long);
+      transform: translateY(0);
+
+      @include media-mobile-only {
+        width: 7rem;
+      }
+    }
+
+    & > h1 {
+      @include media-mobile-only {
+        font-size: 1.75rem;
+      }
     }
 
     & > :global(.index-btn) {
