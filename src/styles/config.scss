@@ -21,6 +21,7 @@
 
   --height-nav: 7rem;
   --height-footer: 7.5rem;
+
   @include media-mobile-only {
     --height-nav: 5rem;
     --height-footer: 12rem;
