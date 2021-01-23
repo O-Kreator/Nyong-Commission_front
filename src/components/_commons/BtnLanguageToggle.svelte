@@ -8,7 +8,9 @@
   };
 </script>
 
-<button class={`${$$props.class} ${$locale === 'ko-KR' && 'text-en'}`} on:click={changeLangToNext}>
+<button
+  class={`${$$props.class ? `${$$props.class} ` : ''}${$locale === 'ko-KR' && 'text-en'}`}
+  on:click={changeLangToNext}>
   {$_(`commons.change-lang`)}
 </button>
 

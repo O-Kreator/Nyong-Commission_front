@@ -7,9 +7,14 @@
 </script>
 
 {#if href}
-  <a class={`${styleType} ${themeChar} ${$$props.class}`} {href}><slot /></a>
+  <a class={`${$$props.class ? `${$$props.class} ` : ''}${styleType} ${themeChar}`} {href}
+    ><slot /></a
+  >
 {:else if onClick}
-  <button class={`${styleType} ${themeChar} ${$$props.class}`} on:click={onClick} {disabled}>
+  <button
+    class={`${$$props.class ? `${$$props.class} ` : ''}${styleType} ${themeChar}`}
+    on:click={onClick}
+    {disabled}>
     <slot />
   </button>
 {/if}

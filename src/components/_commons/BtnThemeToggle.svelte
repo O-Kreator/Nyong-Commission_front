@@ -18,7 +18,7 @@
   onMount(setIsThemeDark);
 </script>
 
-<button class={$$props.class} on:click={toggleTheme}>
+<button class={$$props.class ? `${$$props.class}` : ''} on:click={toggleTheme}>
   {#if isThemeDark}
     <IconMoon />
   {:else}
