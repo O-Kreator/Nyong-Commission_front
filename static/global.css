@@ -79,3 +79,26 @@ code {
   color: var(--color-background);
   background: rgba(166, 222, 96, 0.5);
 }
+
+::-webkit-scrollbar {
+  width: var(--space-xs);
+  height: var(--space-xs);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-text);
+  outline: 1px solid var(--color-text);
+
+  transition-duration: var(--time-long);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-nyong);
+
+  transition-duration: var(--time-long);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-text) var(--color-nyong);
+}
