@@ -1,25 +1,20 @@
 <script>
-  import {onMount} from 'svelte';
+  import {writable} from 'svelte/store';
+  import {getTheme, toggleTheme} from '_services/theme.js';
 
   import IconSun from '_static/images/icon_sun.svg';
   import IconMoon from '_static/images/icon_moon.svg';
 
-  let isThemeDark = false;
-
-  const setIsThemeDark = () => {
-    return window.document.body.classList.contains('theme_dark');
-  };
-
-  const toggleTheme = () => {
-    window.document.body.classList.toggle('theme_dark');
-    isThemeDark = !isThemeDark;
-  };
-
-  onMount(setIsThemeDark);
+  const isThemeDark = writable(false);
+ 
+  const onClick = () => {
+    toggleTheme();
+    isThemeDark.set(getTheme() === 'dark');
+  }
 </script>
 
-<button class={$$props.class ? `${$$props.class}` : ''} on:click={toggleTheme}>
-  {#if isThemeDark}
+<button class={$$props.class ? `${$$props.class}` : ''} on:click={onClick}>
+  {#if $isThemeDark}
     <IconMoon />
   {:else}
     <IconSun />

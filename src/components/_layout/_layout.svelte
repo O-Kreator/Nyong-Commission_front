@@ -1,5 +1,7 @@
 <script>
+  import {onMount} from 'svelte';
   import {stores} from '@sapper/app';
+  import {initTheme} from '_services/theme.js';
 
   import Preloader from '_components/_layout/Preloader.svelte';
   import BorderAroundPage from '_components/_layout/BorderAroundPage.svelte';
@@ -9,6 +11,8 @@
 
   const {page} = stores();
   $: isIndex = $page.path === '/';
+
+  onMount(initTheme);
 </script>
 
 <Preloader />
