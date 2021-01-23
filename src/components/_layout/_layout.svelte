@@ -35,7 +35,7 @@
     --color-nyong: var(--color-nyong-bright);
     --color-poroo: var(--color-poroo-bright);
 
-    --color-hover: var(--color-nyong);
+    --color-hover: var(--color-nyong-bright);
     --color-border: var(--color-nyong);
 
     transition: background var(--time-long);
@@ -44,7 +44,7 @@
     overflow-y: overlay;
 
     &.char-poroo {
-      --color-hover: var(--color-poroo);
+      --color-hover: var(--color-poroo-bright);
       --color-border: var(--color-poroo);
     }
   }
