@@ -9,5 +9,18 @@
   "index": {
     "catchphrase": "Want something drawn? Leave it to me.",
     "see-info": "See info"
+  },
+  "info": {
+    "introduce": {
+      "hello": "Hello. I'm Doro-nyong.",
+      "p1": [
+        "Learning artist who loves to draw cute characters like Pokemon and Furries.",
+        "I'm interested in making artworks and I'd like to hear your ideas and try them."
+      ],
+      "p2": [
+        "You can check my recent works in my Twitter or Pixiv, but I can show you some examples of my drawings.",
+        "Look at the boxes below and interact with one of them to get more further."
+      ]
+    }
   }
 }
