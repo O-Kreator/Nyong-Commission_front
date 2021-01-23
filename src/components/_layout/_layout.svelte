@@ -1,15 +1,20 @@
 <script>
+  import {stores} from '@sapper/app';
+
   import Preloader from '_components/_layout/Preloader.svelte';
   import BorderAroundPage from '_components/_layout/BorderAroundPage.svelte';
   import BackgroundGrid from '_components/_layout/BackgroundGrid.svelte';
   import Nav from '_components/_layout/Nav.svelte';
   import Footer from '_components/_layout/Footer.svelte';
+
+  const {page} = stores();
+  $: isIndex = $page.path === '/';
 </script>
 
 <Preloader />
 <BorderAroundPage />
 <BackgroundGrid />
-<main>
+<main class={isIndex ? 'fix-height' : ''}>
   <Nav />
   <div id="slot-wrapper">
     <slot />
@@ -78,13 +83,17 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 100vh;
+    min-height: calc(100% - var(--height-footer));
 
-    @include media-not-mobile {
-      min-height: min(120vw, 640px);
-    }
-    @include media-mobile-only {
-      min-height: 480px;
+    transition: min-height var(--time-long);
+
+    &.fix-height {
+      @include media-not-mobile {
+        min-height: min(120vw, 640px);
+      }
+      @include media-mobile-only {
+        min-height: 480px;
+      }
     }
 
     #slot-wrapper {
