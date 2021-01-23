@@ -17,7 +17,13 @@ $locale.subscribe((value) => {
   currentLocale = value;
 
   if (typeof window !== 'undefined') {
-    setLocalStorage('locale', value);
+    if (value === 'ko-KR') {
+      setLocalStorage('locale', 'ko');
+    } else if (value === 'en-US') {
+      setLocalStorage('locale', 'en');
+    } else {
+      setLocalStorage('locale', value);
+    }
   }
 });
 

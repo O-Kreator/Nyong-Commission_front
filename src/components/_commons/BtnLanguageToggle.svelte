@@ -1,16 +1,16 @@
 <script>
   import {_, locale, locales} from 'svelte-i18n';
 
-  const changeLangToNext = () => {
-    const currentLangIndex = $locales.indexOf($locale);
-    const nextLangIndex = currentLangIndex === $locales.length - 1 ? 0 : currentLangIndex + 1;
-    locale.set($locales[nextLangIndex]);
+  const onClick = () => {
+    const currentLocaleIndex = $locales.indexOf($locale);
+    const nextLocaleIndex = currentLocaleIndex === $locales.length - 1 ? 0 : currentLocaleIndex + 1;
+    locale.set($locales[nextLocaleIndex]);
   };
 </script>
 
 <button
   class={`${$$props.class ? `${$$props.class} ` : ''}${$locale === 'ko-KR' && 'text-en'}`}
-  on:click={changeLangToNext}>
+  on:click={onClick}>
   {$_(`commons.change-lang`)}
 </button>
 
