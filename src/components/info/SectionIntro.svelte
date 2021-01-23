@@ -3,6 +3,7 @@
   import SocialMediaLink from './SocialMediaLink.svelte';
 
   import IconTwitter from '_static/images/icon_twitter.svg';
+  import IconPixiv from '_static/images/icon_pixiv.svg';
 
   import {_, json} from 'svelte-i18n';
 </script>
@@ -24,9 +25,9 @@
         href={'https://twitter.com/doro_nyong_art'}
       />
       <SocialMediaLink
-        icon={IconTwitter}
-        id={'Doro-nyong#4031'}
-        href={'https://twitter.com/doro_nyong_art'}
+        icon={IconPixiv}
+        id={'Doro-nyong'}
+        href={'https://www.pixiv.net/users/22901382'}
       />
     </div>
     <p>
