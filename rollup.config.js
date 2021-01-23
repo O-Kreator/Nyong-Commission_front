@@ -38,7 +38,7 @@ const aliasOptions = {
 	entries: [
 		{find: '_components', replacement: 'src/components'},
 		{find: '_styles', replacement: 'src/styles'},
-		{find: '_services', replacement: 'src/styles'},
+		{find: '_services', replacement: 'src/services'},
 		{find: '_stores', replacement: 'src/stores'},
 		{find: '_static', replacement: 'static'},
 		{find: '_locales', replacement: 'locales'}
