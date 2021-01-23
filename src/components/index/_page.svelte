@@ -90,7 +90,7 @@
     & > :global(.index-copyright-text) {
       position: absolute;
       left: 0;
-      bottom: 1.5rem;
+      bottom: 2.5rem;
       line-height: 1.2;
 
       transition-property: left, bottom;

@@ -3,7 +3,7 @@
 </script>
 
 <div>
-  <CopyrightText class="footer-left-copyright-text" />
+  <CopyrightText />
 </div>
 
 <style lang="scss">
@@ -18,10 +18,6 @@
       position: absolute;
       top: 0;
       left: var(--space-l);
-    }
-
-    & > :global(.footer-left-copyright-text) {
-      margin: 0;
     }
   }
 </style>
